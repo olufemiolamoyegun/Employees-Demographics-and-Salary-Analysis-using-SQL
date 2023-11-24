@@ -1,4 +1,4 @@
-# olufemiolamoyegun-Employees-Demographics-and-Salary-Analysis-using-SQL
+#Employees-Demographics-and-Salary-Analysis-using-SQL
 The data was analyzed using SQL, MySQL bench and visualized in Power BI.
 
 It shows various ages of employees and the salary earned.
