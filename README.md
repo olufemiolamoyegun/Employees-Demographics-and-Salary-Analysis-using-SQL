@@ -1,32 +1,84 @@
-#Employees-Demographics-and-Salary-Analysis-using-SQL
-The data was analyzed using SQL and MySQL Bench and visualized in Power BI.
+Employee Demographics and Salary Analysis Using SQL
+Overview
 
-It shows the various ages of employees and the salary earned.
+This project analyzes employee demographics and salary data using SQL and MySQL Bench, with visualizations created in Power BI. The primary focus is on understanding employee age distribution, salaries, and related demographics. The analysis provides insights into the structure of employee compensation and age trends across occupations.
 
-The data was cleaned using SQL and MYSQL, followed by an exploration of employee salaries and demographics.
+Objective
 
-The power BI shows that the count of employees is 12, and the salary total is 687,000 annually.
+The primary goal is to:
 
-SELECT * FROM SQL.[dbo].[EmployeeDemographics] Left Outer Join SQL [dbo].[EmployeeSalary] ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID
+Explore and clean employee demographic and salary data.
+Examine relationships between age, salary, and occupation.
+Identify key trends to optimize recruitment and training strategies.
+Data Preparation
 
-SELECT FirstName, LastName, Age, CASE WHEN Age > 30 THEN 'Old' ELSE 'Young' END
+The dataset includes employee demographics (age, gender, birth date) and salary details, which were cleaned and analyzed using SQL. Power BI was used to visualize key metrics, including the total salary and the count of employees.
 
-CASE STATEMENT SELECT FirstName, LastName, Age, CASE WHEN AGE > 30 THEN 'Old' ELSE 'Young' END FROM SQL.dbo.EmployeeDemographics WHERE Age is NOT NULL ORDER BY Age CREATE TABLE employee_salary ( employee_id INT NOT NULL, first_name VARCHAR(50) NOT NULL, last_name VARCHAR(50) NOT NULL, occupation VARCHAR(50), salary INT, dept_id INT );
+Key SQL queries:
 
-INSERT INTO employee_demographics (employee_id, first_name, last_name, age, gender, birth_date) VALUES (1,'Leslie', 'Knope', 44, 'Female','1979-09-25'), (3,'Tom', 'Haverford', 36, 'Male', '1987-03-04'), (4, 'April', 'Ludgate', 29, 'Female', '1994-03-27'), (5, 'Jerry', 'Gergich', 61, 'Male', '1962-08-28'), (6, 'Donna', 'Meagle', 46, 'Female', '1977-07-30'), (7, 'Ann', 'Perkins', 35, 'Female', '1988-12-01'), (8, 'Chris', 'Traeger', 43, 'Male', '1980-11-11'), (9, 'Ben', 'Wyatt', 38, 'Male', '1985-07-26'), (10, 'Andy', 'Dwyer', 34, 'Male', '1989-03-25'), (11, 'Mark', 'Brendanawicz', 40, 'Male', '1983-06-14'), (12, 'Craig', 'Middlebrooks', 37, 'Male', '198'
-
-INSERT INTO employee_salary (employee_id, first_name, last_name, occupation, salary, dept_id) VALUES (1, 'Leslie', 'Knope', 'Deputy Director of Parks and Recreation', 75000,1), (2, 'Ron', 'Swanson', 'Director of Parks and Recreation', 70000,1), (3, 'Tom', 'Haverford', 'Entrepreneur', 50000,1), (4, 'April', 'Ludgate', 'Assistant to the Director of Parks and Recreation', 25000,1), (5, 'Jerry', 'Gergich', 'Office Manager', 50000,1), (6, 'Donna', 'Meagle', 'Office Manager', 60000,1), (7, 'Ann', 'Perkins', 'Nurse', 55000,4), (8, 'Chris', 'Traeger', 'City Manager', 90000,3), (9, 'Ben', 'Wyatt', 'State Auditor', 70000,6), (10, 'Andy', 'Dwyer', 'Shoe Shiner and Musician', 20000, NULL), (11, 'Mark', 'Brendanawicz', 'City Planner', 57000, 3), (12, 'Craig', 'Middlebrooks', 'Parks Director', 65000,1);
-
-CREATE TABLE parks_departments ( department_id INT NOT NULL AUTO_INCREMENT, department_name varchar(50) NOT NULL, PRIMARY KEY (department_id) );
-
-INSERT INTO parks_departments (department_name) VALUES ('Parks and Recreation'), ('Animal Control'), ('Public Works'), ('Healthcare'), ('Library'), ('Finance'); 
+Joining Data Tables
 
 
+SELECT * 
+FROM SQL.[dbo].[EmployeeDemographics]
+LEFT OUTER JOIN SQL.[dbo].[EmployeeSalary] 
+ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 
-CONCLUSION 
 
-In 2016, the average age of the highest-paid occupation was 55 years old, and the average salary was $687,000. The occupation with the highest salary was Executive Director of Parks and Recreation, followed by Director of Police and Fire Services and City Manager. The occupation with the lowest salary was city clerk, with an average of $12,000. The occupation with the youngest average age was office manager, with 32 years old, and the occupation with the oldest average age was city manager, with 62 years old.
+Categorizing Age Groups
 
-Solution
+SELECT FirstName, LastName, Age, 
+       CASE WHEN Age > 30 THEN 'Old' ELSE 'Young' END AS AgeGroup
+FROM SQL.[dbo].[EmployeeDemographics]
+WHERE Age IS NOT NULL
+ORDER BY Age;
 
-Young employees should be recruited and trained between the ages of 25 and 29 for maximum output. This is also the highest-paid occupation, so the age of 55 should be lower.
+
+Creating Tables for Analysis
+
+CREATE TABLE employee_salary (
+    employee_id INT NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    occupation VARCHAR(50),
+    salary INT,
+    dept_id INT
+);
+
+
+Populating Tables
+Demographic and salary details were inserted into employee_demographics and employee_salary tables. A separate parks_departments table was created for department information.
+
+Key Insights from Power BI
+
+Employee Count and Salary Total:
+Total number of employees: 12.
+Total annual salary: $687,000.
+Salary and Age Trends:
+Highest Paid Occupation: Executive Director of Parks and Recreation.
+Lowest Paid Occupation: City Clerk, with an average annual salary of $12,000.
+Average Age of Highest-Paid Employees: 55 years.
+Youngest Average Age Occupation: Office Manager (32 years).
+Oldest Average Age Occupation: City Manager (62 years).
+
+Conclusion
+
+In 2016, the average annual salary across all employees was $687,000, with a significant gap between the highest- and lowest-paid roles.
+The youngest employees tended to occupy lower-paid roles, while the highest salaries were associated with older employees in senior positions.
+Recommendations
+
+Recruitment Strategy:
+Focus on hiring and training younger employees, particularly between 25–29 years, to maximize productivity and future growth.
+
+Retention Strategy:
+Consider reducing the age of employees in the highest-paid roles to balance experience with innovation.
+
+Future Analysis:
+Examine other metrics, such as gender pay gaps, department-level performance, and employee satisfaction, to refine HR policies further.
+
+This analysis underscores the value of SQL and Power BI in providing actionable insights into employee demographics and salary structures.
+
+
+
+
+
