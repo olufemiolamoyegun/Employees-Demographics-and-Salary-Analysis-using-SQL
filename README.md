@@ -20,16 +20,15 @@ Joining Data Tables
 
 
 SELECT * 
-FROM SQL.[dbo].[EmployeeDemographics]
-LEFT OUTER JOIN SQL.[dbo].[EmployeeSalary] 
+FROM ```SQL.[dbo].[EmployeeDemographics]
+LEFT OUTER JOIN ```SQL.[dbo].[EmployeeSalary] 
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
-
 
 Categorizing Age Groups
 
-SELECT FirstName, LastName, Age, 
+*SELECT FirstName, LastName, Age, 
        CASE WHEN Age > 30 THEN 'Old' ELSE 'Young' END AS AgeGroup
-FROM SQL.[dbo].[EmployeeDemographics]
+FROM ```SQL.[dbo].[EmployeeDemographics]
 WHERE Age IS NOT NULL
 ORDER BY Age;
 
@@ -47,7 +46,9 @@ CREATE TABLE employee_salary (
 
 
 Populating Tables
-Demographic and salary details were inserted into employee_demographics and employee_salary tables. A separate parks_departments table was created for department information.
+Demographic and salary details were inserted into employee_demographics and employee_salary tables. 
+
+A separate parks_departments table was created for department information.
 
 Key Insights from Power BI
 
