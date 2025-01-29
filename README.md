@@ -17,6 +17,8 @@ The dataset includes employee demographics (age, gender, birth date) and salary 
 Key SQL queries:
 
 -- Joining Data Tables
+```sql
+-- Joining Data Tables
 SELECT * 
 FROM SQL.[dbo].[EmployeeDemographics]
 LEFT OUTER JOIN SQL.[dbo].[EmployeeSalary] 
@@ -38,6 +40,7 @@ CREATE TABLE employee_salary (
     salary INT,
     dept_id INT
 );
+
 
 
 
