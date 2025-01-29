@@ -17,27 +17,29 @@ The dataset includes employee demographics (age, gender, birth date) and salary 
 Key SQL queries:
 
 -- Joining Data Tables
-```SELECT * 
+SELECT * 
 FROM SQL.[dbo].[EmployeeDemographics]
 LEFT OUTER JOIN SQL.[dbo].[EmployeeSalary] 
 ON EmployeeDemographics.EmployeeID = EmployeeSalary.EmployeeID;
 
 -- Categorizing Age Groups
-```SELECT FirstName, LastName, Age, 
+SELECT FirstName, LastName, Age, 
        CASE WHEN Age > 30 THEN 'Old' ELSE 'Young' END AS AgeGroup
 FROM SQL.[dbo].[EmployeeDemographics]
 WHERE Age IS NOT NULL
-ORDER BY Age;```
+ORDER BY Age;
 
 -- Creating Tables for Analysis
-```CREATE TABLE employee_salary (
+CREATE TABLE employee_salary (
     employee_id INT NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     occupation VARCHAR(50),
     salary INT,
     dept_id INT
-);```
+);
+
+
 
 
 Populating Tables
